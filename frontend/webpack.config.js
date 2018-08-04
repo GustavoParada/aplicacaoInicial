@@ -1,5 +1,6 @@
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+//const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: './src/index.jsx',
@@ -19,7 +20,13 @@ module.exports = {
         }
     },
     plugins: [
-        new ExtractTextPlugin('app.css')
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "app.css",
+            chunkFilename: "99.css"
+          }),
+        // new ExtractTextPlugin('app.css')
     ],
     module: {
         rules: [{
@@ -32,10 +39,20 @@ module.exports = {
             }
         }, {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
+            use: [
+                {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: {
+                    // you can specify a publicPath here
+                    // by default it use publicPath in webpackOptions.output
+                    publicPath: '../'
+                  }
+                },
+                "css-loader"
+              ]
         }, {
             test: /\.woff|.woff2|.ttf|.eot|.svg*.*$/,
-            loader: 'file'
+            loader: 'file-loader'
         }]
     }
 }
