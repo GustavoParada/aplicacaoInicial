@@ -4,7 +4,7 @@ const mongoose = restful.mongoose
 const todoSchema = new mongoose.Schema({
     description: { type: String, required: true },
     done: { type: Boolean, required: true, default: false },
-    creatAt: { type: Date, defalut: Date.now }
+    createdAt: { type: Date, defalut: Date.now() }
 })
 
 module.exports = restful.model('Todo', todoSchema)

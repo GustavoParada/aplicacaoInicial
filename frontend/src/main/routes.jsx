@@ -10,7 +10,7 @@ export default props => (
         <Switch>
             <Route path='/todos' component={Todo} />
             <Route path='/about' component={About} />
-            <Redirect from='*' to='/about' />
+            <Redirect from='*' to='/todos' />
         </Switch>
     </HashRouter>
 )
