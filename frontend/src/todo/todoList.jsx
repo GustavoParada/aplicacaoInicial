@@ -8,16 +8,18 @@ export default props => {
 
         return list.map(todo => (
             <tr key={todo._id}>
-
-                <td>
+                <td className={todo.done ? 'markAsDone' : 'markAsUnDone'}>
                     {todo.description}
                 </td>
-                <td>
-                    <IconButton style='danger' icon='trash' onClick={() => props.handleRemove(todo)}>
-                    </IconButton>
+                <td className='todoActions'>
+                    <IconButton style='success' icon='check' hide={todo.done}
+                        onClick={() => props.handleMarkAsDone(todo)} />
+                    <IconButton style='warning' icon='undo' hide={!todo.done}
+                        onClick={() => props.handleMarkAsUnDone(todo)} />
+                    <IconButton style='danger' icon='trash' hide={!todo.done}
+                        onClick={() => props.handleRemove(todo)} />
                 </td>
             </tr>
-
         ))
     }
     return (
@@ -26,6 +28,7 @@ export default props => {
                 <thead>
                     <tr>
                         <th> Descrição </th>
+                        <th> Ações </th>
                     </tr>
                 </thead>
                 <tbody>
