@@ -8,7 +8,7 @@ export default props => (
         </a>
         <ul className='nav navbar-nav'>
             <li className="nav-item active"><a className="nav-link" href="#/todos">Tarefas</a></li>
-            <li className="nav-item "><a className="nav-link" href="#/todo">Sobre</a></li>
+            <li className="nav-item "><a className="nav-link" href="#/about">Sobre</a></li>
         </ul>
     </nav>
 )

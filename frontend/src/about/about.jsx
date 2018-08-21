@@ -10,5 +10,6 @@ export default props => (
         <p> bla bla bla bla</p>
         <h2> imprensa </h2>
         <p> bla bla bla bla</p>
+        {console.log('oi')}
     </div>
 )

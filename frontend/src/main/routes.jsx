@@ -4,13 +4,13 @@ import { Switch, Route, Redirect, HashRouter, hashHistory } from 'react-router-d
 import Todo from '../todo/todo'
 import About from '../about/about'
 
-
 export default props => (
     <HashRouter history={hashHistory}>
         <Switch>
-            <Route path='/todos' component={Todo} />
             <Route path='/about' component={About} />
-            <Redirect from='*' to='/todos' />
+            <Route path='/todos' component={Todo} />
+
+            {/* <Redirect from='*' to='/todos' /> */}
         </Switch>
     </HashRouter>
 )
